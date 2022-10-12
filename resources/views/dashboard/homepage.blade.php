@@ -2,6 +2,7 @@
 <p><a href="/logout">Logout</a></p>
 
     <h1>Welcome to home page</h1>
+    <p><a href="/dashboard/show_add">Add Employee</a></p>
 
     <div>
         <table class="table">
@@ -21,9 +22,8 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td>
-                        <a href="#">Add</a> 
                         <a href="#">Delete</a> 
-                        <a href="#">View</a> 
+                        <a href="/dashboard/show_user">View</a> 
                     </td>
                 </tr>
             </tbody>

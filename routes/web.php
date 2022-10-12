@@ -19,6 +19,10 @@ Route::get('/', function () {
 });
 route::get('/logout', [EmployeeController::class, 'logout']);
 route::get('/dashboard/homepage', [EmployeeController::class, 'show']);
+route::get('/dashboard/show_add', [EmployeeController::class, 'index_add']);
+route::get('dashboard/store_employee', [EmployeeController::class, 'store']);
+route::get('/dashboard/show_user', [EmployeeController::class, 'index_show']);
+
 
 Route::prefix("/authentication")->group(function(){
     route::get('/register', [EmployeeController::class, 'index']);

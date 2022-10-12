@@ -48,28 +48,43 @@ class EmployeeController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
+
             return redirect()->intended('dashboard/homepage');
         }
 
-        
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
- 
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
- 
+
         $request->session()->invalidate();
-     
+
         $request->session()->regenerateToken();
         return redirect('/authentication/login');
-
     }
 
-    public function show(){
+    public function show()
+    {
         return view("dashboard.homepage");
+    }
+
+    public function index_add()
+    {
+        return view('dashboard.add_employee');
+    }
+
+    public function store()
+    {
+    
+    }
+
+    public function index_show()
+    {
+        return "Working show";
     }
 }
