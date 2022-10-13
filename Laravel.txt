@@ -12,14 +12,18 @@
 
     // Yung UserRequest, nasa App/Http/Requests/UserRequests 
     // or check mo yung line 12
+php artisan key:generate
+php artisan cache:clear 
+php artisan config:clear
 
+composer install
 php artisan migrate //create tables
 php artisan serve //start server
 php artisan migrate:refresh --seed //populate database
 php artisan make:model "Name"  
 php artisan make:controller "Name"
-php artisan make:migration student_table --table=students //create table for the seeders database
-php artisan make:factory "StundentFactory" //create factory
+php artisan make:migration employee_table --table=employee //create table for the seeders database
+php artisan make:factory "EmployeeFactory" //create factory
 
 
 What to learn? 
