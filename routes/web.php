@@ -24,6 +24,7 @@ route::get('/dashboard/show_add', [EmployeeController::class, 'index_add']);
 route::get('dashboard/store_employee', [EmployeeController::class, 'store']);
 route::get('/dashboard/show_user/{id}', [EmployeeController::class, 'index_show']);
 route::get('/dashboard/delete/{id}', [EmployeeController::class, 'destroy']);
+route::get('/dashboard/edit/{id}', [EmployeeController::class, 'edit']);
 
 
 Route::prefix("/authentication")->group(function(){

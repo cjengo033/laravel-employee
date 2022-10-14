@@ -83,7 +83,6 @@ class EmployeeController extends Controller
 
     public function store()
     {
-    
     }
 
     public function index_show($id)
@@ -96,5 +95,11 @@ class EmployeeController extends Controller
     {
         Employee::findOrFail($id)->delete();
         return redirect()->intended('dashboard/homepage');
+    }
+
+    public function edit($id, Request $request)
+    {
+        Employee::findOrFail($id)->update([$request->all()]);
+        return back();
     }
 }
