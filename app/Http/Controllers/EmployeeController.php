@@ -62,7 +62,6 @@ class EmployeeController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
@@ -72,7 +71,6 @@ class EmployeeController extends Controller
     public function show()
     {
         $all_employee = DB::table('employees')->get();
-        // dd($all_employee);
         return view("dashboard.homepage", ["data_employee" => $all_employee]);
     }
 
@@ -81,8 +79,14 @@ class EmployeeController extends Controller
         return view('dashboard.add_employee');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        Employee::create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        return redirect()->intended('dashboard/homepage');
     }
 
     public function index_show($id)
@@ -99,7 +103,10 @@ class EmployeeController extends Controller
 
     public function edit($id, Request $request)
     {
-        Employee::findOrFail($id)->update([$request->all()]);
+        Employee::find($id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
         return back();
     }
 }

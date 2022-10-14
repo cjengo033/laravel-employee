@@ -15,17 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 route::get('/logout', [EmployeeController::class, 'logout']);
-route::get('/dashboard/homepage', [EmployeeController::class, 'show']);
-route::get('/dashboard/show_add', [EmployeeController::class, 'index_add']);
-route::get('dashboard/store_employee', [EmployeeController::class, 'store']);
-route::get('/dashboard/show_user/{id}', [EmployeeController::class, 'index_show']);
-route::get('/dashboard/delete/{id}', [EmployeeController::class, 'destroy']);
-route::get('/dashboard/edit/{id}', [EmployeeController::class, 'edit']);
-
 
 Route::prefix("/authentication")->group(function(){
     route::get('/register', [EmployeeController::class, 'index']);
@@ -34,3 +24,13 @@ Route::prefix("/authentication")->group(function(){
     route::post('/login/process', [EmployeeController::class, 'login']);
    
 });
+
+Route::prefix("/dashboard")->group(function(){
+    route::get('/homepage', [EmployeeController::class, 'show']);
+    route::get('/show_add', [EmployeeController::class, 'index_add']);
+    route::post('/store_employee', [EmployeeController::class, 'store']);
+    route::get('/show_user/{id}', [EmployeeController::class, 'index_show']);
+    route::get('/delete/{id}', [EmployeeController::class, 'destroy']);
+    route::post('/edit/{id}', [EmployeeController::class, 'edit']);
+});
+
