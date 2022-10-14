@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,8 @@ route::get('/logout', [EmployeeController::class, 'logout']);
 route::get('/dashboard/homepage', [EmployeeController::class, 'show']);
 route::get('/dashboard/show_add', [EmployeeController::class, 'index_add']);
 route::get('dashboard/store_employee', [EmployeeController::class, 'store']);
-route::get('/dashboard/show_user', [EmployeeController::class, 'index_show']);
+route::get('/dashboard/show_user/{id}', [EmployeeController::class, 'index_show']);
+route::get('/dashboard/delete/{id}', [EmployeeController::class, 'destroy']);
 
 
 Route::prefix("/authentication")->group(function(){

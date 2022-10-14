@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +71,9 @@ class EmployeeController extends Controller
 
     public function show()
     {
-        return view("dashboard.homepage");
+        $all_employee = DB::table('employees')->get();
+        // dd($all_employee);
+        return view("dashboard.homepage", ["data_employee" => $all_employee]);
     }
 
     public function index_add()
@@ -83,8 +86,15 @@ class EmployeeController extends Controller
     
     }
 
-    public function index_show()
+    public function index_show($id)
     {
-        return "Working show";
+        $data = Employee::findOrFail($id);
+        return view('dashboard.edit_employee', ["employee" => $data]);
+    }
+
+    public function destroy($id)
+    {
+        Employee::findOrFail($id)->delete();
+        return redirect()->intended('dashboard/homepage');
     }
 }
