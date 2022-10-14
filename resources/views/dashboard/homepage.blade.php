@@ -2,12 +2,10 @@
 <p><a href="/logout">Logout</a></p>
 
     <h1>Welcome to home page</h1>
-    <p><a href="/dashboard/show_add">Add Employee</a></p>
 
-        
-  
-    <div>
-        <table class="table">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded m-5">
+        <a href="/dashboard/show_add">Add Employee</a>
+        <table class="table text-center table-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -25,7 +23,7 @@
                     <td>{{$item->email}}</td>
                     <td>{{$item->created_at}}</td>
                     <td>
-                        <a href="#">Delete</a> 
+                        {{-- <a href="#">Delete</a>  --}}
                         <a href="/dashboard/show_user/{{$item->id}}">View</a> 
                     </td>
                 </tr>
@@ -34,4 +32,4 @@
         </table>
     </div>
 
-@include('component.footer')
+{{-- @include('component.footer') --}}
