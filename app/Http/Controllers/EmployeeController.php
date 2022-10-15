@@ -79,12 +79,16 @@ class EmployeeController extends Controller
         return view('dashboard.add_employee');
     }
 
-    public function store(Request $request)
+    public function store(Request $request) //Add Employee from the table
     {
-        Employee::create([
-            'name' => $request->name,
-            'email' => $request->email,
+        $validated = $request->validate([
+            'name' => 'required|min:4|Alpha',
+            'email' => 'required|unique:employees'
         ]);
+
+        // dd($validated);
+
+        Employee::create($validated);
 
         return redirect()->intended('dashboard/homepage');
     }
