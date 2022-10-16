@@ -1,4 +1,4 @@
-@include('component.header')
+@include('component.url_link')
 
 <h1>Register</h1>
 <form action="/authentication/register/process" method="POST">
@@ -29,7 +29,3 @@
     <p><a href="/authentication/login">Have an account? Login</a></p>
 </form>
 
-
-
-
-@include('component.footer')

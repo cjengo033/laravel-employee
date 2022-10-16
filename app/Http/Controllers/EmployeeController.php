@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
@@ -91,6 +92,17 @@ class EmployeeController extends Controller
         Employee::create($validated);
 
         return redirect()->intended('dashboard/homepage');
+
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        // ]);
+        
+        // if ($validator->fails())
+        // {
+        //     return response()->json(['errors'=>$validator->errors()->all()]);
+        // }
+        // return response()->json(['success'=>'Record is successfully added']);
     }
 
     public function index_show($id)

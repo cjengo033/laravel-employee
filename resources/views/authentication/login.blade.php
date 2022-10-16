@@ -1,4 +1,4 @@
-@include('component.header')
+@include('component.url_link')
 
 <h1>Login</h1>
 <form action="/authentication/login/process" method="POST">
