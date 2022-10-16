@@ -22,5 +22,9 @@
     <p><a href="/authentication/register">Don't have an account? Register</a></p>
 </form>
 
+@error('email')
+    <p> {{$message}}</p>
+@enderror
+
 
 @include('component.footer');
