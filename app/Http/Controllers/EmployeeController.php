@@ -18,19 +18,23 @@ class EmployeeController extends Controller
 
     public function register(Request $request)
     {
-
-        $hash_password = Hash::make($request->password); //make hash password
-
+        // Hash::make($request->password); //make hash password
+        $validated = $request->validate([
+            'name' => 'required|min:4|Alpha',
+            'email' => 'required|unique:employees',
+            'password' => 'required'
+        ]);
+        // return ($validated);
         $user_data = DB::table('users')->insert([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $hash_password
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password'])
         ]);
 
         if ($user_data) {
             return redirect("authentication/login");
         } else {
-            return abort(401);
+            return redirect("authentication/dashboard");
         }
 
         // return "working";
