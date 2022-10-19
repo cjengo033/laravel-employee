@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\EmployeeController;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('users', UserController::class);
 
 route::get('/logout', [EmployeeController::class, 'logout']);
 
@@ -33,4 +40,7 @@ Route::prefix("/dashboard")->group(function(){
     route::get('/delete/{id}', [EmployeeController::class, 'destroy']);
     route::post('/edit/{id}', [EmployeeController::class, 'edit']);
 });
+
+Route::get('ajax-request', [AjaxController::class, 'create']);
+Route::post('ajax-request', [AjaxController::class, 'store']);
 

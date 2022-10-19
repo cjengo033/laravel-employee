@@ -25,6 +25,7 @@ class EmployeeController extends Controller
             'password' => 'required'
         ]);
         // return ($validated);
+        return $validated;
         $user_data = DB::table('users')->insert([
             'name' => $validated['name'],
             'email' => $validated['email'],
