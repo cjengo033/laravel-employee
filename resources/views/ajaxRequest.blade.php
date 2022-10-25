@@ -80,27 +80,27 @@
         let password = $("input[name=password]").val();
         let _token = $('meta[name="csrf-token"]').attr('content');
 
-        $.ajax({
-            url: "/ajax-request",
-            type: "POST",
-            data: {
-                name: name,
-                email: email,
-                password: password,
-                _token: _token
-            },
-            success: function(response) {
-                console.log(response);
-                if (response) {
-                    $('.success').text(response.success);
-                    $("#ajaxform")[0].reset();
-                }
-            },
-            error: function(error) {
-                $('#nameError').text(error.responseJSON.errors.name);
-                $('#emailError').text(error.responseJSON.errors.email);
-                $('#passError').text(error.responseJSON.errors.password);
-            }
-        });
+        // $.ajax({
+        //     url: "/ajax-request",
+        //     type: "POST",
+        //     data: {
+        //         name: name,
+        //         email: email,
+        //         password: password,
+        //         _token: _token
+        //     },
+        //     success: function(response) {
+        //         console.log(response);
+        //         if (response) {
+        //             $('.success').text(response.success);
+        //             $("#ajaxform")[0].reset();
+        //         }
+        //     },
+        //     error: function(error) {
+        //         $('#nameError').text(error.responseJSON.errors.name);
+        //         $('#emailError').text(error.responseJSON.errors.email);
+        //         $('#passError').text(error.responseJSON.errors.password);
+        //     }
+        // });
     });
 </script>

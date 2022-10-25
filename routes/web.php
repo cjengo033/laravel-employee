@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\CrudController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CrudController::class, 'index']);
+Route::resource('todo', CrudController::class);
 
 Route::resource('users', UserController::class);
 
@@ -43,4 +44,9 @@ Route::prefix("/dashboard")->group(function(){
 
 Route::get('ajax-request', [AjaxController::class, 'create']);
 Route::post('ajax-request', [AjaxController::class, 'store']);
+
+Route::controller(ProductController::class)->group(function(){
+    Route::get('products', 'index');
+    Route::post('products', 'store')->name('products.store');
+});
 
