@@ -32,7 +32,7 @@
             </table>
             <div class="modal fade" id="formModal" aria-hidden="true">
                 @error('title')
-                    <p>{{$message}}</p>
+                    <p>{{ $message }}</p>
                 @enderror
                 <div class="modal-dialog">
                     <div class="modal-content">

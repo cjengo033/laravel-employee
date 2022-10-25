@@ -8,8 +8,6 @@
         'ID' => $item->id,
         'Title' => 'Edit User',
     ])
-  
- 
 @endforeach
 
 <div class="shadow-lg p-3 mb-5 rounded m-5">
@@ -29,7 +27,6 @@
             </tr>
         </thead>
         @foreach ($data_employee as $item)
-        
             <tbody>
                 <tr>
                     {{-- @include('component.delete_modal', ['ID' => $item->id, 'Title' => 'Delete User']) --}}
@@ -37,29 +34,10 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->created_at }}</td>
-                    <td>{{ $item->id}}</td>
-                    <td>
-                        {{-- <a href="#">Delete</a>  --}}
-                        {{-- <a href="/dashboard/show_user/{{ $item->id }}">Show</a> --}}
+                    <td>           
+                        <button type="submit" class="btn btn-success "><a href="/dashboard/show_user/{{ $item->id }}" class="text-white text-decoration-none">View</a></button>
+                       
 
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#editModal">
-                            Edit User
-                        </button>
-
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">
-                            Delete User
-                        </button>
-                        
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                            data-bs-target="#viewModal">
-                            {{$item->id}}
-                        </button>
-
-                        
-                            @include('component.view_modal')
-                 
                     </td>
                 </tr>
             </tbody>
